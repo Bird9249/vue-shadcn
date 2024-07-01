@@ -1,14 +1,22 @@
+import MainLayout from '@/components/layouts/MainLayout.vue'
 import { authRoutes } from '@/modules/authentication/routes'
+import DashboardView from '@/modules/dashboard/views/DashboardView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      name: 'main-layout',
+      component: MainLayout,
+      children: [
+        {
+          path: '/',
+          name: 'dashboard',
+          component: DashboardView
+        }
+      ]
     },
     ...authRoutes
   ]

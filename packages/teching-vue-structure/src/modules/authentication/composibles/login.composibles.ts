@@ -21,11 +21,11 @@ export function useLogin() {
     const res = await api.post<LoginResponse>('/auth', values)
 
     localStorage.setItem('token', res.data.token)
-    auth.user = { id: res.data.user.id, username: res.data.user.username }
+    auth.user = res.data.user
 
     api.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('token')}`
 
-    push({ name: 'home' })
+    push({ name: 'dashboard' })
 
     toast({
       title: res.data.message,

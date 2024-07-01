@@ -1,5 +1,15 @@
 export interface LoginResponse {
-  user: { id: number; username: string }
+  user: UserResponse
   token: string
   message: string
+}
+
+export interface UserResponse {
+  id: number
+  username: string
+  permissions: string[]
+  roles: {
+    name: 'product management'
+    isDefault: false
+  }[]
 }

@@ -2,7 +2,7 @@ import { createMiddleware } from "hono/factory";
 import { HTTPException } from "hono/http-exception";
 import { verify } from "hono/jwt";
 
-export const echoMiddleware = createMiddleware(async ({ req, set }, next) => {
+export const authMiddleware = createMiddleware(async ({ req, set }, next) => {
   const authorization = req.header("Authorization");
 
   if (!authorization)
