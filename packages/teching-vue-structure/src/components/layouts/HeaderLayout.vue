@@ -12,9 +12,10 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { useLogout } from '@/modules/authentication/composibles/logout.composible'
+import type { UserResponse } from '@/modules/authentication/types/login.type'
 
 const props = defineProps<{
-  username?: string
+  user?: UserResponse
 }>()
 
 const { logout } = useLogout()
@@ -64,7 +65,7 @@ const { logout } = useLogout()
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>{{ props.username }}</DropdownMenuLabel>
+        <DropdownMenuLabel>{{ props.user?.username }}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem
           class="cursor-pointer"
